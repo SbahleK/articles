@@ -20,19 +20,21 @@ else
  IList<Article>? GetArticles(string filepath)
 {
 	string articles = File.ReadAllText(filepath);
+
 	if(string.IsNullOrEmpty(articles))
 	{ 
 		return null;
 	}
 
 	var listOfArticles = JsonConvert.DeserializeObject<List<Article>>(articles);
+
 	return listOfArticles;
 }
 
 
 Dictionary<string, int> GetNumberOfPublishedArticles(IList<Article> articles)
 {
-	//from the dictionary idea that popped up at the end of our chat I was able to optimise and remove all those for loops like I explained
+	//From the dictionary idea that I had at the end of our chat I was able to optimise and remove all those for loops like I explained
 	var monthlyPublishedArticles = new Dictionary<string, int>();
 
 	foreach (var article in articles)
